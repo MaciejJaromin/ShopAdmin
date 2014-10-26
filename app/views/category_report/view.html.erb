@@ -1,12 +1,13 @@
-<p id="notice"><%= notice %></p>
+<h1>Admin Panel</h1>
 
+<%= link_to 'New Product', new_product_path %> <br />
+<%= link_to 'New Category', new_category_path %>
+
+<% Category.all.each do |category| %>
 <p>
-  <strong>Name:</strong>
-  <%= @category.name %>
+  <strong>Category:</strong>
+  <%= category.name %>
 </p>
-
-<p>Listing products</p>
-
 <table>
   <thead>
   <tr>
@@ -17,7 +18,7 @@
   </thead>
 
   <tbody>
-  <% @category.products.each do |product| %>
+  <% category.products.each do |product| %>
       <tr>
         <td><%= product.name %></td>
         <td><%= product.price %></td>
@@ -28,8 +29,7 @@
   <% end %>
   </tbody>
 </table>
-<%= link_to 'New Product', new_product_path %>
 <br>
-<br>
-<%= link_to 'Edit Category', edit_category_path(@category) %> |
+<%= link_to 'Edit Category', edit_category_path(category) %> |
 <%= link_to 'Back', categories_path %>
+<% end %>
